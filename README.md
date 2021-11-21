@@ -1,3 +1,10 @@
+# 🛒 *Counter App*
+## *An App which simulates a shopping cart on websites over the internet*
+![Counter App](https://user-images.githubusercontent.com/66558110/142747637-8c7b526f-feb1-47fe-9988-b3f386453bd9.png)
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
