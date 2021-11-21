@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import NavBar from './components/navbar';
 import Counters from "./components/counters";
 import './App.css';
-// import Counter from './components/counter';
-// import { render } from '@testing-library/react';
+
 
 class App extends Component {
   state = {
@@ -32,6 +31,15 @@ class App extends Component {
     this.setState({ counters });
   };
 
+  handleDecrement = counter => {
+    console.log("Decrement", counter);
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value--;
+    this.setState({ counters });
+  };
+
   handleDelete = (counterId) => {
     const counters = this.state.counters.filter(c => c.id !== counterId);
     this.setState({ counters });
@@ -51,11 +59,12 @@ class App extends Component {
     return (
       <React.Fragment>
         <NavBar totalCounters={this.state.counters.filter(c => c.value > 0).length} />
-        <main className="container">
+        <main role="main" className="container">
           <Counters
             counters={this.state.counters}
             onReset={this.handleReset}
             onIncrement={this.handleIncrement}
+            onDecrement={this.handleDecrement}
             onDelete={this.handleDelete}
           />
         </main>

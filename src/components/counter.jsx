@@ -16,15 +16,39 @@ class Counter extends React.Component {
 
   render() {
     console.log('Counter - Rendered');
-
+    const { counter, onIncrement, onDecrement, onDelete } = this.props;
     return (
-      <div>
-        {this.props.children}
-        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button onClick={() => this.props.onIncrement(this.props.counter)}
-          className="btn btn-secondary btn-sm">Increment
-        </button>
-        <button onClick={() => this.props.onDelete(this.props.counter.id)} className="btn btn-danger btn-sm m-2">Delete</button>
+      // <div>
+      //   {this.props.children}
+      //   <span className={this.getBadgeClasses()}>
+      //     {this.formatCount()}
+      //   </span>
+      //   <button onClick={() => onIncrement(counter)}
+      //     className="btn btn-secondary btn-sm">Increment
+      //   </button>
+      //   <button onClick={() => onDelete(counter.id)}
+      //     className="btn btn-danger btn-sm m-2">Delete</button>
+      // </div>
+
+      <div className="row">
+        <div className="col-1">
+          <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        </div>
+        <div className="col">
+          <button
+            onClick={() => onIncrement(counter)}
+            className="btn btn-secondary btn-sm m-2">+
+          </button>
+          <button
+            onClick={() => onDecrement(counter)}
+            className="btn btn-secondary btn-sm m-2"
+            disabled={counter.value === 0 ? "disabled" : ""}>-
+          </button>
+          <button
+            onClick={() => onDelete(counter.id)}
+            className="bnt btn-danger btn-sm m-2">Delete
+          </button>
+        </div>
       </div>
     );
   }
@@ -37,7 +61,7 @@ class Counter extends React.Component {
 
   formatCount() {
     const { value: count } = this.props.counter;
-    return count === 0 ? "Zero" : count;
+    return count === 0 ? "0" : count;
   }
 }
 
